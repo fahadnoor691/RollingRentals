@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Redirect Page</title>
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@700&display=swap");
+
+      body {
+        margin: 0;
+        padding: 0;
+        display: flex;
+      }
+      #left {
+        width: 50%;
+        height: 100vh;
+        background-color: #ffd700;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 72px;
+        font-weight: bold;
+        font-family: "Montserrat", sans-serif;
+        white-space: nowrap;
+      }
+      #right {
+        width: 50%;
+        height: 100vh;
+        background-color: black;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 72px;
+        font-weight: bold;
+        font-family: "Montserrat", sans-serif;
+        white-space: nowrap;
+        color: #ffd700;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="left" onclick="redirectToPage('login')">Rent In</div>
+    <div id="right" onclick="redirectToPage('owner/signup')">Rent Out</div>
+
+    <script>
+      function redirectToPage(pageUrl) {
+        window.location.href = pageUrl;
+      }
+    </script>
+  </body>
+</html>

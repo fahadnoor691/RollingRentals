@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Car Rental - Car Listing</title>
+    <link rel="stylesheet" href="/css/main.css" />
+  </head>
+  <body>
+    <nav class="navbar">
+      <a href="#" class="logo">Rolling Rentals</a>
+
+      <ul class="menu">
+        <li><a href="/">Home</a></li>
+        <li><a href="#">About</a></li>
+        <li><a href="#">Cars</a></li>
+        <li><a href="#">Pricing</a></li>
+        <li><a href="/add-cars">Add Cars</a></li>
+        <li><a href="#">My Account</a></li>
+        <li class="nav-btn"><a href="/signup">Login/Sign Up</a></li>
+      </ul>
+    </nav>
+
+    <div class="container">
+      <h1>Find the perfect car for your journey</h1>
+      <form action="#" method="get">
+        <label for="location">Pick-up Location</label>
+        <input
+          type="text"
+          id="location"
+          name="location"
+          placeholder="Enter location"
+          required
+        />
+        <label for="date">Pick-up Date</label>
+        <input
+          type="text"
+          id="date"
+          name="date"
+          placeholder="DD/MM/YYYY"
+          required
+        />
+
+        <label for="time">Pick-up Time</label>
+        <input type="text" id="time" name="time" placeholder="HH:MM" required />
+
+        <label for="brand">Brand</label>
+        <select id="brand" name="brand">
+          <option value="">Select a brand</option>
+          <option value="suzuki">Suzuki</option>
+          <option value="honda">Honda</option>
+          <option value="toyota">Toyota</option>
+          <option value="kia">Kia</option>
+        </select>
+
+        <label for="model">Model</label>
+        <input
+          type="text"
+          id="model"
+          name="model"
+          placeholder="Enter a model name"
+        />
+
+        <button type="submit">Search</button>
+      </form>
+    </div>
+
+    <main>
+      <h2>Available Cars</h2>
+      <ul class="car-listing">
+        <li class="car">
+          <img src="/pics/elantra.jpeg" alt="Car 1" />
+          <div class="car-details">
+            <h3>hyundai Elantra</h3>
+            <p class="price">Rs. 8000 per day</p>
+            <p class="description">Automatic</p>
+            <p class="description">9-km/ 1-litre</p>
+            <p class="description">4 people</p>
+            <p class="description">Sedan</p>
+            <button class="rent-button">Rent Now</button>
+          </div>
+        </li>
+        <li class="car">
+          <img src="/pics/hrv.jpg" alt="Car 2" />
+          <div class="car-details">
+            <h3>Honda HRV</h3>
+            <p class="price">Rs. 10000 per day</p>
+            <p class="description">Automatic</p>
+            <p class="description">10-km/ 1-litre</p>
+            <p class="description">4 people</p>
+            <p class="description">SUV</p>
+            <a href="/car-description"
+              ><button class="rent-button">Rent Now</button></a
+            >
+            <!-- <form action="/cart" method="post">
+                <button class="btn" type="submit">Rent Noe</button>
+                <input type="hidden" name="productId" value="<%= product._id %>" />
+            </form> -->
+          </div>
+        </li>
+        <li class="car">
+          <img src="/pics/swift.jpeg" alt="Car 3" />
+          <div class="car-details">
+            <h3>Suzuki Swift</h3>
+            <p class="price">Rs. 7000 per day</p>
+            <p class="description">Automatic</p>
+            <p class="description">12-km/ 1-litre</p>
+            <p class="description">4 people</p>
+            <p class="description">Hatchback</p>
+            <button class="rent-button">Rent Now</button>
+          </div>
+        </li>
+      </ul>
+    </main>
+  </body>
+</html>

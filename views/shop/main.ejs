@@ -1,0 +1,37 @@
+<%- include('../includes/header') %>
+
+</head>
+<body>
+    <%- include('../includes/navigation.ejs') %>
+    <%- include('../includes/filter.ejs') %>
+    <link rel="stylesheet" href="/css/main.css" />
+ <main>
+      <h2 class="ownername">Available Cars</h2>
+
+      <% if (cars.length > 0) { %>
+       <ul class="car-listing">
+          <% for( let car of cars) { %>
+          <li class="car">
+          <img src=<%= car.image %> alt=<%= car.name %> />
+          <div class="car-details">
+            <h3><%= car.brand %> <%= car.name %></h3>
+            <p class="price">Rs. <%= car.price %> per day</p>
+            <p class="description"><%= car.transmission %></p>
+            <p class="description"><%= car.mileage %>-km/ 1-litre</p>
+            <p class="description"><%= car.seats %> people</p>
+            <p class="description"><%= car.cartype %></p>
+            <a href="/car-description/<%= car._id %>">
+            <button class="rent-button">Rent Now</button>
+</a>
+
+          </div>
+        </li>
+          <% } %>
+        
+      </ul>
+
+      <% } %>
+      
+    </main>
+  </body>
+ 

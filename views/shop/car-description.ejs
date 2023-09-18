@@ -1,0 +1,24 @@
+<%- include('../includes/header') %>
+<link rel="stylesheet" href="/css/nav.css" />
+ <link rel="stylesheet" href="/css/car-description.css" />
+   
+</head>
+<body>
+    <%- include('../includes/navigation.ejs') %>
+
+<div class="container">
+      <div class="image-container">
+        <img class="image" src=<%= car.image %> alt=<%= car.name %> />
+      </div>
+      <div class="description-container">
+        <h1 class="product-title"><%= car.brand %> <%= car.name %></h1>
+        <p class="product-description"><%= car.transmission %> </p>
+        <p class="product-description"><%= car.transmission %>-km/1-litre</p>
+        <p class="product-description"><%= car.seats %> people</p>
+        <p class="product-description"><%= car.cartype %></p>
+        <p class="product-price">Rs. <%= car.price %></p>
+        <button class="form-button">Rent Now</button>
+      </div>
+    </div>
+  </body>
+</html>

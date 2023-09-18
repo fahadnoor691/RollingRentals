@@ -1,0 +1,68 @@
+<%- include('../includes/header') %>
+
+</head>
+<body>
+    <link rel="stylesheet" href="/css/main.css" />
+ <main>
+      <h2 class="ownername">Your Listings</h2>
+
+      <% if (cars.length > 0) { %>
+       <ul class="car-listing">
+          <% for( let car of cars) { %>
+          <li class="car">
+          <img src=<%= car.image %> alt=<%= car.name %> />
+          <div class="car-details">
+            <h3><%= car.brand %> <%= car.name %></h3>
+            <p class="price">Rs. <%= car.price %> per day</p>
+            <p class="description"><%= car.transmission %></p>
+            <p class="description"><%= car.mileage %>-km/ 1-litre</p>
+            <p class="description"><%= car.seats %> people</p>
+            <p class="description"><%= car.cartype %></p>
+           <a href="/owner/edit-car/<%= car._id %>?edit=true">
+            <button class="rent-button">Edit</button>
+            <!-- <button class="rent-button" type="submit">Delete</button> -->
+
+            <form action="/owner/delete-car" method="POST">
+                <input type="hidden" value="<%= car._id %>" name="carId">
+                <button class="rent-button" >Delete</button>
+            </form>
+</a>
+
+          </div>
+        </li>
+          <% } %>
+        
+      </ul>
+
+      <% } %>
+      
+
+        <!-- <li class="car">
+          <img src="/pics/hrv.jpg" alt="Car 2" />
+          <div class="car-details">
+            <h3>Honda HRV</h3>
+            <p class="price">Rs. 10000 per day</p>
+            <p class="description">Automatic</p>
+            <p class="description">10-km/ 1-litre</p>
+            <p class="description">4 people</p>
+            <p class="description">SUV</p>
+            <a href="/car-description"
+              ><button class="rent-button">Rent Now</button></a
+            >
+          </div>
+        </li>
+        <li class="car">
+          <img src="/pics/swift.jpeg" alt="Car 3" />
+          <div class="car-details">
+            <h3>Suzuki Swift</h3>
+            <p class="price">Rs. 7000 per day</p>
+            <p class="description">Automatic</p>
+            <p class="description">12-km/ 1-litre</p>
+            <p class="description">4 people</p>
+            <p class="description">Hatchback</p>
+            <button class="rent-button">Rent Now</button>
+          </div>
+        </li> -->
+    </main>
+  </body>
+ 

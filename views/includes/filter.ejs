@@ -1,0 +1,115 @@
+<head>
+  <!-- Add this to the <head> section of your HTML -->
+  <link
+    rel="stylesheet"
+    href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css"
+  />
+  <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+</head>
+<style>
+  /* Style for the date input fields */
+  label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 5px;
+  }
+
+  input[type="text"] {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+    outline: none;
+  }
+
+  /* Style for the form container (optional) */
+  .form-container {
+    max-width: 400px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+  }
+</style>
+<div class="container">
+  <h1>Find the perfect car for your journey</h1>
+  <form class="filter" action="/search" method="get">
+    <label for="location">Pick-up Location</label>
+    <input
+      type="text"
+      id="location"
+      name="location"
+      placeholder="Enter location"
+      required
+    />
+
+    <label for="date">Pick-up Date</label>
+    <input
+      type="text"
+      id="pickdate"
+      name="pickdate"
+      placeholder="DD/MM/YYYY"
+      required
+      readonly
+    />
+
+    <br />
+    <br />
+    <label for="date">Return Date</label>
+    <input
+      type="text"
+      id="retdate"
+      name="retdate"
+      placeholder="DD/MM/YYYY"
+      required
+      readonly
+    />
+    <button type="submit" id="searchButton">Search</button>
+  </form>
+</div>
+
+<script>
+  // Initialize flatpickr for pickdate with minimum date set to today
+  const pickdate = flatpickr("#pickdate", {
+    dateFormat: "Y-m-d", // Customize the date format
+    minDate: "today", // Set the minimum date to today
+  });
+
+  // Initialize flatpickr for retdate
+  const retdate = flatpickr("#retdate", {
+    dateFormat: "Y-m-d", // Customize the date format
+  });
+
+  // Set the minimum date for retdate based on pickdate
+  pickdate.config.onClose.push(function (selectedDates) {
+    if (selectedDates.length > 0) {
+      retdate.set("minDate", selectedDates[0]);
+    }
+  });
+
+  function checkFields() {
+    const location = document.getElementById("location").value;
+    const pickdate = document.getElementById("pickdate").value;
+    const retdate = document.getElementById("retdate").value;
+
+    const searchButton = document.getElementById("searchButton").value;
+    if (location && pickdate && retdate) {
+      searchButton.disabled = false;
+    } else {
+      alert("Please fill all fields");
+      searchButton.disabled = true;
+    }
+
+    const locInput = document.getElementById("location");
+    const pickdateInput = document.getElementById("pickdate");
+    const retdateInput = document.getElementById("retdate");
+
+    locInput.addEventListener("change", checkFields());
+    pickdateInput.addEventListener("change", checkFields());
+    retdateInput.addEventListener("change", checkFields());
+  }
+</script>
