@@ -62,10 +62,14 @@ exports.filter = (req, res, next) => {
     //   { carType: type }, // Check if carType matches 'type'
     //   { brand: brand }, // Check if brand matches 'brand'
     // ],
-  }).then((cars) => {
-    res.render("shop/main", {
-      cars: cars,
+  })
+    .then((cars) => {
+      res.render("shop/main", {
+        cars: cars,
+      });
+      console.log(query);
+    })
+    .catch((err) => {
+      console.log(err);
     });
-    console.log(query);
-  });
 };
