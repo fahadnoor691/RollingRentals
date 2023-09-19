@@ -13,7 +13,9 @@
     font-weight: bold;
     margin-bottom: 5px;
   }
-
+  #searchButton:disabled {
+    cursor: not-allowed;
+  }
   input[type="text"] {
     width: 100%;
     padding: 10px;
@@ -68,7 +70,7 @@
       required
       readonly
     />
-    <button type="submit" id="searchButton">Search</button>
+    <button type="submit" id="searchButton" disabled>Search</button>
   </form>
 </div>
 
@@ -96,20 +98,24 @@
     const pickdate = document.getElementById("pickdate").value;
     const retdate = document.getElementById("retdate").value;
 
-    const searchButton = document.getElementById("searchButton").value;
+    const searchButton = document.getElementById("searchButton");
+
+    // Enable the search button only if all fields are filled and meet criteria
     if (location && pickdate && retdate) {
       searchButton.disabled = false;
     } else {
-      alert("Please fill all fields");
       searchButton.disabled = true;
     }
-
-    const locInput = document.getElementById("location");
-    const pickdateInput = document.getElementById("pickdate");
-    const retdateInput = document.getElementById("retdate");
-
-    locInput.addEventListener("change", checkFields());
-    pickdateInput.addEventListener("change", checkFields());
-    retdateInput.addEventListener("change", checkFields());
   }
+
+  // Function to check if a date is in valid DD/MM/YYYY format
+
+  // Attach event listeners to input elements to check fields when they change
+  const locationInput = document.getElementById("location");
+  const pickdateInput = document.getElementById("pickdate");
+  const retdateInput = document.getElementById("retdate");
+
+  locationInput.addEventListener("input", checkFields);
+  pickdateInput.addEventListener("input", checkFields);
+  retdateInput.addEventListener("input", checkFields);
 </script>
