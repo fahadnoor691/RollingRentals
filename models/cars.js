@@ -35,6 +35,15 @@ const carSchema = new Schema({
     type: String,
     required: true,
   },
+  location: {
+    type: String,
+    required: true,
+  },
+  ownerId: {
+    type: Schema.Types.ObjectId,
+    ref: "owner",
+    required: true,
+  },
 });
 
 module.exports = mongoose.model("Cars", carSchema);

@@ -25,6 +25,7 @@ exports.postAddCar = (req, res, next) => {
     seats: seats,
     carType: carType,
     image: image,
+    ownerId: req.owner,
   });
 
   car

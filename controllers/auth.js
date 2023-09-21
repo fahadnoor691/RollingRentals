@@ -46,6 +46,7 @@ exports.postSignup = (req, res, next) => {
           const user = new User({
             email: email,
             password: hashedPassword,
+            booking: { items: [] },
           });
           return user.save();
         })

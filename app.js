@@ -3,6 +3,8 @@ const bodyParser = require("body-parser");
 const path = require("path");
 const mongoose = require("mongoose");
 
+const Owner = require("./models/owner");
+
 const app = express();
 
 app.set("view engine", "ejs");
@@ -17,6 +19,17 @@ const ownerRoutes = require("./routes/owner");
 
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(express.static(path.join(__dirname, "public")));
+
+app.use((req, res, next) => {
+  Owner.findById("650aea3e123a77585c278122")
+    .then((owner) => {
+      req.owner = owner;
+      next();
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+});
 
 app.use(carRoutes);
 app.use(AuthRoutes);
