@@ -331,3 +331,18 @@ input[type="date"] {
   font-size: 16px;
   outline: none;
 }
+
+.car-name {
+  text-align: center;
+}
+
+a {
+  text-decoration: none; /* Remove underlines */
+  color: inherit; /* Inherit the text color from its parent */
+}
+
+/* Style the <a> tag when hovered */
+a:hover {
+  text-decoration: underline; /* Add underline on hover if desired */
+  color: inherit; /* Inherit the text color on hover */
+}

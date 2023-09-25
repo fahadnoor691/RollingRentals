@@ -1,4 +1,11 @@
 <%- include('../includes/header') %>
+
+<!-- <style>
+.inline-elements i,
+.inline-elements p {
+  display: inline;
+} -->
+</style>
 <link rel="stylesheet" href="/css/nav.css" />
  <link rel="stylesheet" href="/css/car-description.css" />
    
@@ -11,12 +18,29 @@
         <img class="image" src=<%= car.image %> alt=<%= car.name %> />
       </div>
       <div class="description-container">
-        <h1 class="product-title"><%= car.brand %> <%= car.name %></h1>
-        <p class="product-description"><%= car.transmission %> </p>
-        <p class="product-description"><%= car.transmission %>-km/1-litre</p>
-        <p class="product-description"><%= car.seats %> people</p>
-        <p class="product-description"><%= car.cartype %></p>
-        <p class="product-price">Rs. <%= car.price %></p>
+        <h1 class="product-title"><%= car.brand %> <%= car.name %> Model <%= car.model %></h1>
+
+        <div class="inline-elements">
+            <i class="fa-solid fa-gears"></i>
+            <p class="description"><%= car.transmission %></p>
+            </div>
+
+            <div class="inline-elements">
+              <i class="fa-solid fa-gas-pump"></i>
+              <p class="description"><%= car.mileage %>-km/ 1-litre</p>
+            </div>
+
+            <div class="inline-elements">
+            <i class="fa-solid fa-user-group"></i>
+            <p class="description"><%= car.seats %> people</p>
+            </div>
+
+            <p class="description"><%= car.cartype %></p>
+
+            <div class="inline-elements">
+            <i class="fa-solid fa-ellipsis fa-bounce"></i>
+            <p class="description">more</p>
+            </div>
         <button class="form-button">Rent Now</button>
       </div>
     </div>

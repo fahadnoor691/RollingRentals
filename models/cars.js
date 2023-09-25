@@ -11,6 +11,10 @@ const carSchema = new Schema({
     type: String,
     required: true,
   },
+  model: {
+    type: String,
+    required: true,
+  },
   price: {
     type: Number,
     required: true,

@@ -4,6 +4,7 @@ const express = require("express");
 const router = express.Router();
 const carsController = require("../controllers/cars");
 const rootDir = require("../util/path");
+const isAuth = require("../middleware/is_auth");
 
 router.get("/", carsController.main);
 

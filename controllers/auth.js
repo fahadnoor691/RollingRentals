@@ -3,30 +3,58 @@ const bcrypt = require("bcryptjs");
 const Owner = require("../models/owner");
 
 exports.getOwnerSignUP = (req, res, next) => {
+  let message = req.flash("error");
+  if (message.length > 0) {
+    message = message[0];
+  } else {
+    message = null;
+  }
   res.render("auth/ownerSignUp", {
     pageTitle: "Sign Up",
     path: "/signup",
+    isAuthenticated: false,
   });
 };
 
 exports.getOwnerLogin = (req, res, next) => {
+  let message = req.flash("error");
+  if (message.length > 0) {
+    message = message[0];
+  } else {
+    message = null;
+  }
   res.render("auth/ownerLogin", {
     pageTitle: "Sign Up",
     path: "/signup",
+    isAuthenticated: false,
   });
 };
 
 exports.getSignUP = (req, res, next) => {
+  let message = req.flash("error");
+  if (message.length > 0) {
+    message = message[0];
+  } else {
+    message = null;
+  }
   res.render("auth/sign-up", {
     pageTitle: "Sign Up",
     path: "/signup",
+    isAuthenticated: false,
   });
 };
 
 exports.getLogin = (req, res, next) => {
+  let message = req.flash("error");
+  if (message.length > 0) {
+    message = message[0];
+  } else {
+    message = null;
+  }
   res.render("auth/login", {
     pageTitle: "Sign Up",
     path: "/signup",
+    isAuthenticated: false,
   });
 };
 
@@ -81,14 +109,22 @@ exports.postLogin = (req, res, next) => {
   User.findOne({ email: email })
     .then((user) => {
       if (!user) {
+        req.flash("error", "Invalid email or password.");
         return res.redirect("/login");
       }
+
       bcrypt
         .compare(password, user.password)
         .then((doMatch) => {
           if (doMatch) {
-            return res.redirect("/cars");
+            req.session.isLoggedIn = true;
+            req.session.user = user;
+            return req.session.save((err) => {
+              console.log(err);
+              return res.redirect("/cars");
+            });
           }
+          req.flash("error", "Invalid email or password.");
           res.redirect("/login");
         })
         .catch((err) => {
@@ -107,11 +143,18 @@ exports.postOwnerLogin = (req, res, next) => {
       if (!user) {
         return res.redirect("/owner/login");
       }
+      req.session.isLoggedIn = true;
+      req.session.owner = user;
       bcrypt
         .compare(password, user.password)
         .then((doMatch) => {
           if (doMatch) {
-            return res.redirect("/owner/add-car");
+            req.session.isLoggedIn = true;
+            req.session.owner = user;
+            return req.session.save((err) => {
+              console.log(err);
+              res.redirect("/owner/add-car");
+            });
           }
           res.redirect("/owner/login");
         })

@@ -1,5 +1,10 @@
 <%- include('../includes/header') %>
-
+<style>
+.inline-elements i,
+.inline-elements p {
+  display: inline;
+}
+</style>
 </head>
 <body>
     <%- include('../includes/navigation.ejs') %>
@@ -12,17 +17,35 @@
        <ul class="car-listing">
           <% for( let car of cars) { %>
           <li class="car">
+             <a href="/car-description/<%= car._id %>">
+          <h3 class="car-name"><%= car.brand %> <%= car.name %> Model <%= car.model %></h3>
           <img src=<%= car.image %> alt=<%= car.name %> />
           <div class="car-details">
-            <h3><%= car.brand %> <%= car.name %></h3>
-            <p class="price">Rs. <%= car.price %> per day</p>
+            <p class="price">Rs. <%= car.price %> /day</p>
+            
+            <div class="inline-elements">
+            <i class="fa-solid fa-gears"></i>
             <p class="description"><%= car.transmission %></p>
-            <p class="description"><%= car.mileage %>-km/ 1-litre</p>
+            </div>
+
+            <div class="inline-elements">
+              <i class="fa-solid fa-gas-pump"></i>
+              <p class="description"><%= car.mileage %>-km/ 1-litre</p>
+            </div>
+
+            <div class="inline-elements">
+            <i class="fa-solid fa-user-group"></i>
             <p class="description"><%= car.seats %> people</p>
+            </div>
+
             <p class="description"><%= car.cartype %></p>
-            <a href="/car-description/<%= car._id %>">
-            <button class="rent-button">Rent Now</button>
-</a>
+
+            <div class="inline-elements">
+            <i class="fa-solid fa-ellipsis fa-bounce"></i>
+            <p class="description">more</p>
+            </div>
+           </div>
+            </a>
 
           </div>
         </li>

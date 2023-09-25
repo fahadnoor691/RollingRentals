@@ -15,6 +15,7 @@
         <label for="password">Password</label>
         <input type="password" id="password" name="password" required />
         <label for="password">Confirm Password</label>
+        <input type="hidden" name="_csrf" value="<%= csrfToken %>">
         <input
           type="password"
           id="confirmpassword"
